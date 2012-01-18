@@ -1,0 +1,7 @@
+This program pretty-prints a Latex table, given a list of records.  We have
+used it for spotting patterns in combinatorial data, but presumably there are
+many other uses.
+
+The records should be in the format of a python dictionary, whose keys are all n-tuples.
+
+
