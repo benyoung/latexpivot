@@ -20,9 +20,7 @@ class datapoint:
         self.page = (s,a)
 
         self.show = True     # Change this to hide some entries
-
-        if self.show:
-            self.value = value
+        self.value = value
 
     def render(self):
         output = ""
