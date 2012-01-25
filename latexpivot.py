@@ -43,6 +43,9 @@ print "\\usepackage{amsmath}"
 print "\\usepackage{amssymb}"
 print "\\usepackage{multirow}"
 print "\\usepackage[a2paper, landscape, hmargin=1cm, vmargin=1cm]{geometry}"
+print "\\newlength{\\tablewidth}"
+print "\\setlength{\\tablewidth}{\\textwidth}"
+print "\\addtolength{\\tablewidth}{-20pt}"
 print "\\begin{document}"
 print "\\tiny"
 
@@ -52,7 +55,7 @@ for pagenum in range(max_page):
     page = sortedpages[pagenum]
     print "%======================================================"
     print "\\par"
-    print "\\resizebox{\\textwidth}{!}{"
+    print "\\resizebox{\\tablewidth}{!}{"
     print "\\begin{tabular}{|c|" + ("c" * max_col) + "|}"
     print "\hline"
     print "&\\multicolumn{%d}{|c|}{"%max_col + table.page_heading % page + "}\\\\"
