@@ -1,5 +1,4 @@
-# Change this to alter the way keys and values get assigned
-# rows, columns, and so forth.  
+# This class contains parameters for how the table should be rendered.
 class table:
     row_heading = "$n = %d$"
     col_heading = "$e_{%d}$"
@@ -9,6 +8,10 @@ class table:
     max_row =  15
     max_page = 10
 
+# This class defines how we should interpret the data, which data should
+# be printed, and how we assign the data to rows, columns, and pages.
+# The render method produces the actual latex code which goes in the 
+# corresponding row and column of the table.
 class datapoint:
     def __init__(self, key, value):
         (n, s, a, b) = key
