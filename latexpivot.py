@@ -33,6 +33,10 @@ sortedpages = sorted([p for p in pagenames])
 sortedrows = sorted([r for r in rownames])
 sortedcols = sorted([c for c in colnames])
 
+max_col = min(len(sortedcols), table.max_col)
+max_row = min(len(sortedrows), table.max_row)
+max_page = min(len(sortedpages), table.max_page)
+
 print "\\documentclass{article}"
 print "\\usepackage{graphicx}"
 print "\\usepackage{amsmath}"
@@ -44,34 +48,37 @@ print "\\tiny"
 
 
 # Page header
-for pagenum in range(table.max_page):
+for pagenum in range(max_page):
     page = sortedpages[pagenum]
     print "%======================================================"
     print "\\par"
     print "\\resizebox{\\textwidth}{!}{"
-    print "\\begin{tabular}{|c|" + ("c" * table.max_col) + "|}"
-    print "\\multicolumn{*}{|c|}" + table.page_heading % page + "\\\\"
+    print "\\begin{tabular}{|c|" + ("c" * max_col) + "|}"
     print "\hline"
+    print "&\\multicolumn{%d}{|c|}{"%max_col + table.page_heading % page + "}\\\\"
 
 # column headers
     to_print = ""
-    for colnum in range(table.max_col):
+    for colnum in range(max_col):
         col = sortedcols[colnum]
-        to_print += "& " + table.column_heading % col 
+        to_print += "& " + table.col_heading % col 
     print to_print, "\\\\"
     print "\hline"
 
 # table body lines - each line starts with a row header
-    for rownum in range(table.max_row):
+    for rownum in range(max_row):
         row = sortedrows[rownum]
         to_print =  ""
-        for colnum in range(table.max_col):
+        for colnum in range(max_col):
             col = sortedcols[colnum]
             to_print += "& " + datatable[(page, row, col)] 
         print table.row_heading % row, to_print, "\\\\"
     print "\\hline"
     print "\\end{tabular}"
     print "}"
+ #   print "$"
+
+    print "\\vspace{\\baselineskip}"
 
 print "\end{document}"
 
