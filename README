@@ -2,8 +2,11 @@ This program pretty-prints a Latex table, given a list of records.  We have
 used it for spotting patterns in combinatorial data, but presumably there are
 many other uses.
 
-The records should be in the format of a python dictionary, whose keys are all n-tuples.
+You call it as follows:
+    ./latexpivot.py data.py instructions.py >output.tex
 
-The instructions file contains two classes -- datapoint and table.  They define the way that the data should be interpreted and printed, as well as some parameters of the table.  
+data.py should define a python dictionary called "data".  Probably the keys of this dictionary are going to be tuples of integers, and the values are the things to print (perhaps a list of stuff?)
+
+The instructions file should define two classes -- datapoint and table.  They define the way that the data should be interpreted and printed, as well as some parameters of the table.
 
 
