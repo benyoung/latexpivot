@@ -4,4 +4,6 @@ many other uses.
 
 The records should be in the format of a python dictionary, whose keys are all n-tuples.
 
+The instructions file contains two classes -- datapoint and table.  They define the way that the data should be interpreted and printed, as well as some parameters of the table.  
+
 
