@@ -9,7 +9,7 @@ instructionsfile = sys.argv[2]
 # This should create the dictionary "data"
 execfile(datafile)
 
-# This should create the "datapoint" class.
+# This should create the "datapoint" and "table" classes.
 execfile(instructionsfile)
 
 # This is one easy way to make a sparse table, indexed by some random thing,
@@ -49,6 +49,10 @@ print "\\addtolength{\\tablewidth}{-20pt}"
 print "\\begin{document}"
 print "\\tiny"
 
+try:
+    print table.header_tex
+except AttributeError:
+    pass
 
 # Page header
 for pagenum in range(max_page):
